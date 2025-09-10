@@ -1,15 +1,17 @@
 from django.db import models
 
-# Create your models here.
-class Eventos(models.Model):
-    nombre = models.CharField(max_length=50)
-    fecha = models.IntegerField()
-    lugar = models.CharField(max_length=100)
+class Organizador(models.Model):
+    nombre = models.CharField(max_length=100)
+    contacto = models.CharField(max_length=100)
 
-class Organizadores(models.Model):
-    nombre = models.CharField(max_length=50)
-    contacto = models.ImageField()
-
-    
     def __str__(self):
-        return self.title
+        return self.nombre
+
+class Evento(models.Model):
+    nombre = models.CharField(max_length=100)
+    fecha = models.DateField()
+    lugar = models.CharField(max_length=200)
+    organizador = models.ForeignKey(Organizador, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombre
