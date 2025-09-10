@@ -6,6 +6,10 @@ class Eventos(models.Model):
     fecha = models.IntegerField()
     lugar = models.CharField(max_length=100)
 
+class Organizadores(models.Model):
+    nombre = models.CharField(max_length=50)
+    contacto = models.ImageField()
+
     
     def __str__(self):
         return self.title
